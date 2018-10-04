@@ -1,5 +1,4 @@
 function gridCreate(columnSize = 100, rowSize = 100){
-  //Always contain same amount of blocks within any sized moniter
   let columnPercent = 100 / columnSize;
   let rowPercent = 100 / rowSize;
 
@@ -32,7 +31,8 @@ function gridCreate(columnSize = 100, rowSize = 100){
   for(i = 0; i < blocks.length; i++){
     blocks[i].addEventListener('mouseover', function(event){
       if(event.target.style.backgroundColor != ''){
-        colorDarken(event.target.style.backgroundColor);
+        event.target.style.backgroundColor = colorDarken(event.target.style.backgroundColor);
+
       }else{
         event.target.style.backgroundColor = 'rgb(' + randomRgbNumGen() + ',' + randomRgbNumGen() + ',' + randomRgbNumGen() + ')';
       };
@@ -54,7 +54,11 @@ function colorDarken(rgbValue){
   let red = rgbArray[1];
   let green = rgbArray[2];
   let blue = rgbArray[3];
-  console.log(red,green,blue)
+  if(red < 50 || green < 50 || blue < 50){
+    return 'rgb(0,0,0)'
+  }else{
+    return 'rgb(' + (red - 40) + ',' + (green - 40) + ',' + (blue - 40) + ')';
+  }
 };
 
 gridCreate();
@@ -63,13 +67,13 @@ let button = document.querySelector('button')
 //creates new grid on button press with prompted new grid size
 button.onclick = function(){
   alert('Let\'s make the sketch pad a new size!')
-  let newColumnSize = prompt("Enter Amount of Blocks spanning Left to Right! (From 1 to 200)");
+  let newColumnSize = prompt("Enter Amount of Blocks spanning Left to Right (From 1 to 200)");
   while(isNaN(newColumnSize) || (1 > newColumnSize) || (newColumnSize > 200)){
-    newColumnSize = prompt("Enter Amount of Blocks spanning Left to Right! (From 1 to 200)");
+    newColumnSize = prompt("Enter Amount of Blocks spanning Left to Right (From 1 to 200)");
   };
-  let newRowSize = prompt("Enter Amount of Blocks spanning Up and Down! (From 1 to 200)");
+  let newRowSize = prompt("Enter Amount of Blocks spanning Up and Down (From 1 to 200)");
   while(isNaN(newRowSize) || (1 > newRowSize) || (newRowSize > 200)){
-    newRowSize = prompt("Enter Amount of Blocks spanning Up and Down! (From 1 to 200)");
+    newRowSize = prompt("Enter Amount of Blocks spanning Up and Down (From 1 to 200)");
   };
   clearGrid();
   gridCreate(newColumnSize, newRowSize);

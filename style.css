@@ -6,14 +6,11 @@
   z-index: 1;
 }
 
-button{
+button {
   position: fixed;
   z-index: 2;
-}
-
-button {
-  width: 181px; height: 55px;
-  right: 43%;
+  width: 113px; height: 55px;
+  right: 47%;
   top: 10px;
   display: inline-block;
   padding: 15px 25px;
@@ -38,5 +35,5 @@ button:active {
   color: #7b9c55;
   background-color: #056571;
   box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  transform: translateY(2px);
 }
