@@ -1,0 +1,42 @@
+.colorChange{
+  background-color: black;
+}
+
+.blocks{
+  z-index: 1;
+}
+
+button{
+  position: fixed;
+  z-index: 2;
+}
+
+button {
+  width: 181px; height: 55px;
+  right: 43%;
+  top: 10px;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: #0290a2;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #7b9c55;
+}
+
+button:hover {
+  background-color: #056571;
+  color: #7b9c55;
+}
+
+button:active {
+  color: #7b9c55;
+  background-color: #056571;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
