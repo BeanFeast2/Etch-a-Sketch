@@ -1,4 +1,5 @@
 function gridCreate(columnSize = 100, rowSize = 100){
+  //Always contain same amount of blocks within any sized moniter
   let columnPercent = 100 / columnSize;
   let rowPercent = 100 / rowSize;
 
@@ -27,10 +28,14 @@ function gridCreate(columnSize = 100, rowSize = 100){
 
   //creates nodelist of all block divs
   let blocks = document.querySelectorAll('.block');
-  //Changes color of mouseover block and turns block back after 350ms
+  //Changes color of mouseover block to random color
   for(i = 0; i < blocks.length; i++){
     blocks[i].addEventListener('mouseover', function(event){
-      event.target.classList.add('colorChange');
+      if(event.target.style.backgroundColor != ''){
+        colorDarken(event.target.style.backgroundColor);
+      }else{
+        event.target.style.backgroundColor = 'rgb(' + randomRgbNumGen() + ',' + randomRgbNumGen() + ',' + randomRgbNumGen() + ')';
+      };
     });
   };
 };
@@ -39,7 +44,18 @@ function clearGrid(){
   document.getElementById('blockContainer').innerHTML = '';
 };
 
+function randomRgbNumGen(){
+  return (Math.floor(Math.random() * 256));
+};
 
+//takes RBG color and returns darker version of same color
+function colorDarken(rgbValue){
+  let rgbArray = rgbValue.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/i);
+  let red = rgbArray[1];
+  let green = rgbArray[2];
+  let blue = rgbArray[3];
+  console.log(red,green,blue)
+};
 
 gridCreate();
 
