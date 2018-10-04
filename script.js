@@ -46,9 +46,10 @@ gridCreate();
 let button = document.querySelector('button')
 //creates new grid on button press with prompted new grid size
 button.onclick = function(){
-  let newColumnSize = prompt("Enter Amount of Blocks spanning Left and Right! (From 1 to 200)");
+  alert('Let\'s make the sketch pad a new size!')
+  let newColumnSize = prompt("Enter Amount of Blocks spanning Left to Right! (From 1 to 200)");
   while(isNaN(newColumnSize) || (1 > newColumnSize) || (newColumnSize > 200)){
-    newColumnSize = prompt("Enter Amount of Blocks spanning Left and Right! (From 1 to 200)");
+    newColumnSize = prompt("Enter Amount of Blocks spanning Left to Right! (From 1 to 200)");
   };
   let newRowSize = prompt("Enter Amount of Blocks spanning Up and Down! (From 1 to 200)");
   while(isNaN(newRowSize) || (1 > newRowSize) || (newRowSize > 200)){
